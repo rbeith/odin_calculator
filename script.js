@@ -1,3 +1,19 @@
+const buttons = document.querySelectorAll('button');
+let output = document.querySelector('#output');
+let a;
+let b;
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        a = button.id;
+        output.textContent = a;
+        console.log(a)
+        console.log(output)
+    })
+});
+
+console.log(a)
+
 const add = function(a, b) {
     return Math.round(a + b);
 }
@@ -26,4 +42,4 @@ const operate = function(operator, a, b) {
     }
 }
 
-console.log(operate(divide,2,3))
+
