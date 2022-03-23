@@ -20,6 +20,9 @@ const multiply = function(a, b) {
 }
 
 const divide = function(a, b) {
+    if (b == 0) {
+        return "That's illegal!"
+    } else
     return Math.round(10000*(a / b))/10000;
 }
 
@@ -38,16 +41,11 @@ const operate = function(operator, a, b) {
 let result = function() {
     let result;
     for (i = operatorArr.length; i > 0; i--) {
-        console.log(operatorArr.length)
         b = input[1]
-        console.log(b)
         a = input.shift();
-        console.log(a)
         operator = operatorArr.shift();
-        console.log(operator)
         result = operate(operator, Number(a), Number(b))
         input[0] = result;
-        console.log(result)
     }
     return result;
 }
@@ -80,7 +78,6 @@ buttons.forEach((button) => {
             } else if (button.id == '=') {
                 output.textContent += button.id;
                 input.push(a)
-                console.log(input)
                 output.textContent = result();
                 a = '';
             } else if (button.id == 'C') {
