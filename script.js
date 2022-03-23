@@ -8,8 +8,17 @@ let input = [];
 
 
 
-// const findSign = input.find()
-// console.log(findSign())
+const findOperatorValue = function(input) {
+    if (input.includes('+')) {
+        return sliceValue = input.findIndex(operator => operator == '+')
+    } else if (input.includes('-')) {
+        return sliceValue = input.findIndex(operator => operator == '-')
+    } else if (input.includes('x')) {
+        return sliceValue = input.findIndex(operator => operator == 'x')
+    } else if (input.includes('÷')) {
+        return sliceValue = input.findIndex(operator => operator == '÷')
+    }
+};
 
 const add = function(a, b) {
     return Math.round(a + b);
@@ -63,11 +72,12 @@ buttons.forEach((button) => {
                 operator = 'divide';
             } else if (button.id == '=') {
                 output.textContent += button.id;
-                sliceValue =
-                    input.findIndex(operator => operator ===
-                    ('+' || '-' || 'x' || '÷')
-                );
-                console.log(sliceValue)
+                findOperatorValue(input);
+                // sliceValue =
+                //     input.findIndex(operator => operator ===
+                //     ('+' || '-' || 'x' || '÷')
+                // );
+                console.log(findOperatorValue(input))
                 let a = input.slice(0, sliceValue).join('');
                 console.log(a)
                 console.log(input)
