@@ -7,18 +7,6 @@ let operatorArr = [];
 let input = [];
 let operator = '';
 
-// const findOperatorValue = function(input) {
-//     if (input.includes('+')) {
-//         return sliceValue = input.findIndex(operator => operator == '+')
-//     } else if (input.includes('-')) {
-//         return sliceValue = input.findIndex(operator => operator == '-')
-//     } else if (input.includes('x')) {
-//         return sliceValue = input.findIndex(operator => operator == 'x')
-//     } else if (input.includes('÷')) {
-//         return sliceValue = input.findIndex(operator => operator == '÷')
-//     }
-// };
-
 const add = function(a, b) {
     return Math.round(a + b);
 }
@@ -49,16 +37,20 @@ const operate = function(operator, a, b) {
 
 let result = function() {
     let result;
-    for (i = 0; i <= operatorArr.length + 1; i++) {
+    for (i = operatorArr.length; i > 0; i--) {
+        console.log(operatorArr.length)
         b = input[1]
+        console.log(b)
         a = input.shift();
+        console.log(a)
         operator = operatorArr.shift();
+        console.log(operator)
         result = operate(operator, Number(a), Number(b))
         input[0] = result;
+        console.log(result)
     }
     return result;
 }
-
 
 buttons.forEach((button) => {
         button.addEventListener('click', () => {
