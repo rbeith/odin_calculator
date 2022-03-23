@@ -47,7 +47,17 @@ const operate = function(operator, a, b) {
     }
 }
 
-
+let result = function() {
+    let result;
+    for (i = 0; i <= operatorArr.length + 1; i++) {
+        b = input[1]
+        a = input.shift();
+        operator = operatorArr.shift();
+        result = operate(operator, Number(a), Number(b))
+        input[0] = result;
+    }
+    return result;
+}
 
 
 buttons.forEach((button) => {
@@ -55,7 +65,6 @@ buttons.forEach((button) => {
             if (button.id == '1' || button.id == '2' || button.id == '3' || button.id == '4'|| button.id == '5'|| button.id == '6' || button.id == '7' || button.id == '8' || button.id == '9' || button.id == '0') {
                 output.textContent += button.id;
                 a += button.id;
-                console.log(a)
             } else if (button.id == '+') {
                 output.textContent += button.id;
                 operatorArr.push('add');
@@ -63,42 +72,24 @@ buttons.forEach((button) => {
                 a = '';
             } else if (button.id == '-') {
                 output.textContent += button.id;
-                input.push(button.id);
-                operator = 'subtract';
+                operatorArr.push('subtract');
+                input.push(a)
+                a = '';
             } else if (button.id == 'x') {
                 output.textContent += button.id;
-                input.push(button.id);
-                operator = 'multiply';
+                operatorArr.push('multiply');
+                input.push(a)
+                a = '';
             } else if (button.id == '÷') {
                 output.textContent += button.id;
-                input.push(button.id);
-                operator = 'divide';
+                operatorArr.push('divide');
+                input.push(a)
+                a = '';
             } else if (button.id == '=') {
                 output.textContent += button.id;
                 input.push(a)
                 console.log(input)
-                console.log(operatorArr)
-                let result = '';
-                for (i = input.length; i > 0; i--) {
-                    a = input.shift()
-                    console.log(a)
-                    operator = operatorArr.shift();
-                    console.log(operator)
-                    b = input.shift()
-                    console.log(b)
-                    operate(operator, Number(a), Number(b))
-                }
-                console.log(input)
-                    // findOperatorValue(input);
-                    // console.log(findOperatorValue(input))
-                    // let a = input.slice(0, sliceValue).join('');
-                    // console.log(a)
-                    // let b = input.slice(sliceValue + 1).join('');
-                    // console.log(b)
-                    // console.log(operator)
-                //let result = operate(operator, Number(a), Number(b));
-                output.textContent = result;
-                console.log(result)
+                output.textContent = result();
                 a = '';
             } else if (button.id == 'C') {
                 input = [];
