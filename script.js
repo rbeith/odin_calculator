@@ -1,6 +1,6 @@
 const buttons = document.querySelectorAll('button');
 let output = document.querySelector('#output');
-
+output.textContent = '';
 let a = '';
 let b = '';
 let operatorArr = [];
